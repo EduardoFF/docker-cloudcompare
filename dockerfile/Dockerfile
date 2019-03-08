@@ -20,7 +20,7 @@ RUN apt-get update                                          &&\
 RUN git clone --branch v2.10.2 --single-branch --recursive \
         https://github.com/CloudCompare/CloudCompare.git
 
-ADD ./build /CloudCompare/.
+ADD build /CloudCompare/build
 RUN cd /CloudCompare/build  &&\
     ./configure.sh          &&\
     make                    &&\
@@ -33,4 +33,6 @@ RUN git clone -b stable https://github.com/chbrandt/docker_entrypoint.git && \
     ln -sf docker_entrypoint/entrypoint.sh /.
 #
 ENTRYPOINT ["/entrypoint.sh"]
+
+ENV EXECAPP "CloudCompare"
 
