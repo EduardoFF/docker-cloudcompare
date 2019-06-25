@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM flickfit/ubuntu-16-pcl-1.8.1:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update                                          &&\
@@ -26,7 +26,7 @@ RUN cd /CloudCompare/build  &&\
     make                    &&\
     make install            &&\
     make clean
-        
+
 # Add our special entrypoint
 #
 RUN git clone -b stable https://github.com/chbrandt/docker_entrypoint.git && \
@@ -35,4 +35,3 @@ RUN git clone -b stable https://github.com/chbrandt/docker_entrypoint.git && \
 ENTRYPOINT ["/entrypoint.sh"]
 
 ENV EXECAPP "CloudCompare"
-
